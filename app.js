@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const logger = require('morgan')
 
-app.get('/', (req, res) => {
-  res.send('Dante Pablo Miron')
-})
+const indexRouter = require('./routes/index');
+app.use(logger('dev'));
+app.use(express.json());
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+
+app.use('/', indexRouter)
+
+module.exports = app;
