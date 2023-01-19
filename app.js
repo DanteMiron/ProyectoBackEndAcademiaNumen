@@ -7,6 +7,6 @@ app.use(logger('dev'));
 app.use(express.json());
 
 
-app.use('/', indexRouter)
+app.use('/producto', indexRouter);
 
 module.exports = app;
