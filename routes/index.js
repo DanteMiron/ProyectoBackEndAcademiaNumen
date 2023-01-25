@@ -4,6 +4,6 @@ const index= require('../controllers/indexController')
 
 
 router.get('/', index.index)
-router.get('/ivancho', index.ivancho)
+router.post('/crear', index.crearJugador)
 
 module.exports = router;
