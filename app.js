@@ -8,7 +8,7 @@ app.use(logger('dev'));
 app.use(express.json());
 
 
-app.use('/producto', indexRouter);
+app.use('/', indexRouter);
 connect();
 
 module.exports = app;
