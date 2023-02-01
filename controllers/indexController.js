@@ -15,9 +15,14 @@ const index = {
         }
     },
     
-    verJugador: async (req, res) =>{
+    verJugadores: async (req, res) =>{
         const items = await RiverPlate.find();
         res.status(200).json({items})
+    },
+
+    verJugador: async(req, res) =>{
+        const item = await RiverPlate.findById(req.params.id);
+        res.status(200).json({item})
     }
 }
 
