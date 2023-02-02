@@ -1,4 +1,5 @@
 const {RiverPlate} = require('../models/riverplate')
+const {validationResult} = require('express-validator')
 
 const index = {
     index: (req,res) => {
