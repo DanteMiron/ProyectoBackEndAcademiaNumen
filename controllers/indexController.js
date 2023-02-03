@@ -8,9 +8,15 @@ const index = {
     
     crearJugador: async (req,res) => {
         try {
-            const item = new RiverPlate(req.body);
-            await item.save();
-            res.status(201).json({item})
+            const err = validationResult(req);
+            if (err.isEmpty()) {
+                const item = new RiverPlate(req.body);
+                await item.save();
+                res.status(201).json({item})
+            } else {
+                res.status(501).json({err})
+            }
+            
         } catch (error) {
             res.status(501).json({error})
         }
@@ -24,6 +30,16 @@ const index = {
     verJugador: async(req, res) =>{
         const item = await RiverPlate.findById(req.params.id);
         res.status(200).json({item})
+    },
+
+    editarJugador: async (req,res)=>{
+        try {
+            await RiverPlate.findByIdAndUpdate(req.params.id,req.body);
+            res.status(201).json({msg: 'Modificación concretada'})
+        } catch (error) {
+            res.status(501).json({error})
+        }
+
     }
 }
 
