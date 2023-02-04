@@ -10,7 +10,7 @@ const index = {
         try {
             const err = validationResult(req);
             if (err.isEmpty()) {
-                const item = new RiverPlate(req.body);
+                const item = await new RiverPlate(req.body);
                 await item.save();
                 res.status(201).json({item})
             } else {
