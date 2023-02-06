@@ -40,6 +40,11 @@ const index = {
             res.status(501).json({error})
         }
 
+    },
+
+    eliminarJugador: async (req,res) =>{
+        const item = await RiverPlate.findByIdAndDelete(req.params.id);
+        res.status(204).json({msg: 'el siguiente item fue eliminado', item})
     }
 }
 
