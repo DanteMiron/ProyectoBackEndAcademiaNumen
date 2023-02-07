@@ -45,6 +45,21 @@ const index = {
     eliminarJugador: async (req,res) =>{
         const item = await RiverPlate.findByIdAndDelete(req.params.id);
         res.status(204).json({msg: 'el siguiente item fue eliminado', item})
+    },
+
+    crearSession: (req, res) => {
+        let persona = {
+            nombre:"Dante",
+            id: "123456",
+            idioma:"español"
+        }
+
+        req.session.usuario = persona;
+        res.status(200).json(req.session.usuario);
+    },
+
+    verSession: (req,res) =>{
+        res.status(200).json(req.session)
     }
 }
 

@@ -3,12 +3,13 @@ const app = express();
 const logger = require('morgan');
 const cors = require('cors');
 const session = require('express-session');
+require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const {connect} = require('./db/db');
 
 app.use(session({
-    secret: 'secreto',
+    secret: process.env.SECRET_SESSION,
     resave: true,
     saveUninitialized: true
 }))
