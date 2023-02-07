@@ -53,13 +53,18 @@ const index = {
             id: "123456",
             idioma:"español"
         }
-
+        res.cookie('personaEnSession', persona.id)
         req.session.usuario = persona;
         res.status(200).json(req.session.usuario);
     },
 
     verSession: (req,res) =>{
-        res.status(200).json(req.session)
+        res.status(200).json(req.session);
+    },
+
+    cerrarSession: (req,res) => {
+        req.session.destroy();
+        res.json({msg: 'sesion cerrada'})
     }
 }
 

@@ -14,6 +14,7 @@ router.get('/ver', index.verJugadores);
 router.get('/ver/:id', validarId, index.verJugador);
 router.get('/crearsession', index.crearSession);
 router.get('/verSession', auth, index.verSession );
+router.get('/cerrarSession', index.cerrarSession)
 
 router.post('/crear',validacionCrearJugador , index.crearJugador);
 
