@@ -53,10 +53,21 @@ const index = {
             id: "123456",
             idioma:"español"
         }
-        res.cookie('personaEnSession', persona.id)
+        res.cookie('personaEnSession', persona.id, {maxAge: 60000*60*24*130})
         req.session.usuario = persona;
         res.status(200).json(req.session.usuario);
     },
+
+    verCookie : (req,res) =>{
+        res.json(req.cookies.personaEnSession)
+    },
+    
+    eliminarCookie : (req, res) =>{
+        res.clearCookie('personaEnSession');
+        res.json({msg: 'cookie eliminada'})
+    }
+    ,
+
 
     verSession: (req,res) =>{
         res.status(200).json(req.session);
