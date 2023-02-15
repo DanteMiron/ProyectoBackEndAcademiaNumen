@@ -2,7 +2,7 @@ const {RiverPlate} = require('../models/riverplate');
 const {validationResult} = require('express-validator');
 const {User} =require('../models/user');
 const bcrypt = require('bcryptjs');
-
+const axios = require('axios')
 let salt = bcrypt.genSaltSync(10);
 
 const index = {
@@ -133,6 +133,17 @@ const index = {
         res.clearCookie('personaEnSession');
         req.session.destroy();
         res.json({msg: 'se cerro la session'});
+    },
+
+    api: async (req,res) => {
+        try {
+            let response = await axios.get("https://rickandmortyapi.com/api/character/1");
+            console.log(response)
+            res.status(200).send({response})
+        } catch (err) {
+            res.status(500).send('no funciona')
+        }
+         
     }
 }
 
