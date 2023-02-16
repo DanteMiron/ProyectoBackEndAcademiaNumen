@@ -136,16 +136,16 @@ const index = {
     },
 
     api: async (req,res) => {
-        try {
+           try {
             let response = await axios.get("https://rickandmortyapi.com/api/character/1");
             console.log(response)
-            res.status(200).send({response})
-        } catch (err) {
+            res.status(200).json(response.data)
+           } catch (error) {
             res.status(500).send('no funciona')
-        }
-         
+           }
     }
 }
+
 
 
 module.exports = index
